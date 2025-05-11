@@ -4,13 +4,19 @@
 // The component is styled using Tailwind CSS and includes a button to toggle the chat window.
 // The chat widget includes a list of example questions that users can click to auto-fill the input field, in a mock form.
 
-import { useState, useRef, useEffect } from 'react';
-import { PaperAirplaneIcon, XMarkIcon, ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline';
+
+import React, { useState, useRef, useEffect } from 'react';
+import {
+  PaperAirplaneIcon,
+  XMarkIcon,
+  ChatBubbleBottomCenterTextIcon,
+  ArrowPathIcon,
+} from '@heroicons/react/24/outline';
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hello! How can I assist you today?' }
+    { role: 'assistant', content: 'Hello! How can I assist you today?' },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +26,7 @@ const ChatWidget = () => {
     'How do I sell my license?',
     'What are your business hours?',
     'Where can I find pricing information?',
-    'How do I contact support?'
+    'How do I contact support?',
   ];
 
   useEffect(() => {
@@ -29,32 +35,55 @@ const ChatWidget = () => {
 
   const getCustomReply = (question) => {
     const replies = {
-      'How do I sell my license?': 'To sell your license, please visit our licensing portal.',
-      'What are your business hours?': 'Our business hours are Monday to Friday, 9 AM to 5 PM.',
-      'Where can I find pricing information?': 'You can find pricing information on our pricing page.',
-      'How do I contact support?': 'You can contact support via email at support@example.com.'
+      'How do I sell my license?':
+        'To sell your license, please visit our licensing portal.',
+      'What are your business hours?':
+        'Our business hours are Monday to Friday, 9 AM to 5 PM.',
+      'Where can I find pricing information?':
+        'You can find pricing information on our pricing page.',
+      'How do I contact support?':
+        'You can contact support via email at support@example.com.',
     };
-    return replies[question] || 'I\'m sorry, I don\'t have information on that.';
+    return replies[question] || "I'm sorry, I don't have information on that.";
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage = { role: 'user', content: inputValue };
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
 
-    const customReply = getCustomReply(inputValue);
-    const aiMessage = { role: 'assistant', content: customReply };
-
-    setMessages(prev => [...prev, aiMessage]);
-    setIsLoading(false);
+    setTimeout(() => {
+      const customReply = getCustomReply(userMessage.content);
+      const aiMessage = { role: 'assistant', content: customReply };
+      setMessages((prev) => [...prev, aiMessage]);
+      setIsLoading(false);
+    }, 1000); // 1-second delay
   };
 
   const handleExampleQuestion = (question) => {
-    setInputValue(question);
+    const userMessage = { role: 'user', content: question };
+    setMessages((prev) => [...prev, userMessage]);
+    setIsLoading(true);
+    setInputValue('');
+
+    setTimeout(() => {
+      const customReply = getCustomReply(question);
+      const aiMessage = { role: 'assistant', content: customReply };
+      setMessages((prev) => [...prev, aiMessage]);
+      setIsLoading(false);
+    }, 1000); // 1-second delay
+  };
+
+  const handleRefresh = () => {
+    setMessages([
+      { role: 'assistant', content: 'Hello! How can I assist you today?' },
+    ]);
+    setInputValue('');
+    setIsLoading(false);
   };
 
   return (
@@ -63,22 +92,44 @@ const ChatWidget = () => {
         <div className="w-80 h-[500px] bg-white rounded-lg shadow-xl flex flex-col">
           <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
             <h3 className="font-semibold">Customer Support</h3>
-            <button onClick={() => setIsOpen(false)} className="text-white hover:text-blue-200">
-              <XMarkIcon className="h-5 w-5" />
-            </button>
+            <div className="flex space-x-2">
+              <button
+                onClick={handleRefresh}
+                className="text-white hover:text-blue-200"
+              >
+                <ArrowPathIcon className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:text-blue-200"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
+            </div>
           </div>
           <div className="flex-1 p-4 overflow-y-auto">
             {messages.map((msg, index) => (
-              <div key={index} className={`mb-4 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
-                <div className={`inline-block px-4 py-2 rounded-lg max-w-xs ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'}`}>
+              <div
+                key={index}
+                className={`mb-4 ${
+                  msg.role === 'user' ? 'text-right' : 'text-left'
+                }`}
+              >
+                <div
+                  className={`inline-block px-4 py-2 rounded-lg max-w-xs ${
+                    msg.role === 'user'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-800'
+                  }`}
+                >
                   {msg.content}
                 </div>
               </div>
             ))}
             {isLoading && (
               <div className="text-left mb-4">
-                <div className="inline-block px-4 py-2 rounded-lg bg-gray-200 text-gray-800">
-                  Thinking...
+                <div className="inline-block px-4 py-1 rounded-lg bg-gray-200 text-gray-800">
+                  Typing...
                 </div>
               </div>
             )}
@@ -90,7 +141,11 @@ const ChatWidget = () => {
                 <p className="text-sm text-gray-500 mb-2">Try asking:</p>
                 <div className="flex flex-wrap gap-2">
                   {exampleQuestions.map((question, index) => (
-                    <button key={index} onClick={() => handleExampleQuestion(question)} className="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-full">
+                    <button
+                      key={index}
+                      onClick={() => handleExampleQuestion(question)}
+                      className="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-full"
+                    >
                       {question}
                     </button>
                   ))}
