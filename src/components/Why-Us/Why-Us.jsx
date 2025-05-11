@@ -1,4 +1,11 @@
-// src/components/WhyChooseUs.jsx
+// This component is used to display the "Why Choose Us" section of the SoftSell website.
+// It includes a title and a list of points that highlight the benefits of using SoftSell.  
+// The points are passed as props to the component and are displayed using the PointCard component.
+// The component is animated using Framer motion to create a smooth transition effect when it appears on the screen.
+
+
+
+
 import { motion } from 'framer-motion';
 import PointCard from './WhyUsCard'; // Importing the PointCard component
 
@@ -21,6 +28,7 @@ const WhyChooseUs = ({points}) => {
       animate="show"
       variants={containerVariants}
     >
+      
       <motion.h2
         className="text-3xl font-bold mb-10"
         initial={{ opacity: 0, y: -20 }}

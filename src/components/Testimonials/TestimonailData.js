@@ -1,4 +1,7 @@
-// src/data/testimonialsData.js
+// This file contains the data for the testimonials section of the SoftSell website.  
+// It includes an array of testimonial objects, each containing the name, role, company, review, and image URL of the person giving the testimonial.
+// The testimonials are used to showcase the positive experiences of users who have sold their unused software licenses through SoftSell.
+
 const testimonials = [
     {
       name: "John Doe",

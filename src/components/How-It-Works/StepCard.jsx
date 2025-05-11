@@ -1,3 +1,6 @@
+// Description: This component is a form field that uses Framer Motion for animation effects. It accepts props for placeholder text, value, onChange handler, type of input, and whether the field is required. The component is styled with Tailwind CSS classes for a modern look.
+// This component is used to create a step card for the How It Works section
+
 import { motion } from "framer-motion";
 
 // Animation variants for the step card

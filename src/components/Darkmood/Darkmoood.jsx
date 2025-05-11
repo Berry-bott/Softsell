@@ -1,5 +1,8 @@
-// components/DarkModeToggle.jsx\
-
+// Dark Mode Toggle Component
+// This component is used to toggle between light and dark mode in the SoftSell website.
+// It uses the useEffect hook to check the user's preference and set the theme accordingly.
+// It also uses the useState hook to manage the state of the theme.
+// The component uses the Heroicons library to display the sun and moon icons for the toggle button.
 import { useEffect, useState } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 

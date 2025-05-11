@@ -1,8 +1,6 @@
-// src/components/Contact.jsx
 import { useState } from 'react';
 import FormContainer from './FormContainer';
 import ErrorMessage from './ErrorMessage';
-import SuccessMessage from './SuccessMessage';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -71,7 +69,7 @@ const Contact = () => {
       {/* Success Popup */}
       {showSuccessPopup && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-gray-900 bg-opacity-50">
-          <div className="bg-white dark:bg-gray-800 text-green-500 p-6 rounded-lg shadow-lg">
+          <div className="bg-white dark:bg-gray-800 text-green-500 p-0 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold">Form Submitted Successfully!</h3>
             <p>Your message has been sent, and we'll get back to you soon!</p>
             <button

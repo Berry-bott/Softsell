@@ -1,4 +1,8 @@
-// src/components/PointCard.jsx
+// This component is used to create a card for each point in the "Why Choose Us" section of the SoftSell website.
+// It includes an icon, title, and description for each point.
+// The component is animated using Framer motion to create a smooth transition effect when it appears on the screen.
+
+
 import { motion } from 'framer-motion';
 
 const PointCard = ({ point }) => {

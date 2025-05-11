@@ -1,4 +1,8 @@
-// src/components/HowItWorks.jsx
+
+// THis component is used to display the steps of the process in a grid layout.
+// It uses the Framer motion library to animate the steps as they come into view.
+// This component is used to create a step card for the How It Works section
+
 import { motion } from "framer-motion";
 import StepCard from "./StepCard";
 

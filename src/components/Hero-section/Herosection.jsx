@@ -1,3 +1,10 @@
+
+// This is a React component for a hero section of a webpage.
+// It uses Framer Motion for animations and Tailwind CSS for styling.
+// The hero section includes a background image, an overlay, a title, a description, and a button.
+// The background image has a parallax-like effect, and the text elements animate into view with a staggered effect.
+
+
 import { motion } from "framer-motion";
 
 const containerVariants = {

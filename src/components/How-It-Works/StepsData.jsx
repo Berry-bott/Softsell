@@ -1,4 +1,6 @@
-// src/data/stepsData.js
+// Description: This component is a form field that uses Framer Motion for animation effects. It accepts props for placeholder text, value, onChange handler, type of input, and whether the field is required. The component is styled with Tailwind CSS classes for a modern look.
+// This component stores the steps datas use  to create a step card for the How It Works section  
+
 import { CloudArrowUpIcon, CurrencyDollarIcon, BanknotesIcon } from "@heroicons/react/24/solid";
 
 const steps = [

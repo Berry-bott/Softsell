@@ -1,4 +1,5 @@
-// src/components/Nav.jsx
+
+//this component is used to create a navigation bar for the SoftSell website.
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 import MobileMenuToggle from './MobileToggle';

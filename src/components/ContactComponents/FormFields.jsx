@@ -1,4 +1,9 @@
-// src/components/FormFields.jsx
+// This component is used to create a form field with a placeholder, value, and onChange function.
+// It uses Framer Motion for animation effects.
+// It is a reusable component that can be used in different forms throughout the application.
+// ====== Form Field Component ====
+
+
 import { motion } from 'framer-motion';
 
 const FormField = ({ placeholder, value, onChange, type = "text", required = false }) => {
@@ -17,3 +22,19 @@ const FormField = ({ placeholder, value, onChange, type = "text", required = fal
 };
 
 export default FormField;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,17 +1,23 @@
-// src/components/FormContainer.jsx
-import { motion } from 'framer-motion';
+
+
+import { motion } from 'framer-motion'; // using Framer motion
 import FormField from '../ContactComponents/FormFields'; // Importing FormField component
 
 const FormContainer = ({ form, setForm, handleSubmit, error, success }) => {
+  // This component is used to create a form for the contact page
+  // It takes in form, setForm, handleSubmit, error and success as props
+  // Setting the animation using Framer motion
   return (
+    <main className='py-16 dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300  h-[100vh] bg-gray'>
+
     <motion.section
-      className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300"
+      className=" "
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
     >
       <motion.main
-        className="py-16 px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-white max-w-2xl mx-auto transition-colors duration-300"
+        className=" border-2 h-[550px]  rounded-md py-8 px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-white max-w-2xl mx-auto transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -22,7 +28,7 @@ const FormContainer = ({ form, setForm, handleSubmit, error, success }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Contact Us
+          Contact US
         </motion.h2>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -75,6 +81,8 @@ const FormContainer = ({ form, setForm, handleSubmit, error, success }) => {
         </motion.form>
       </motion.main>
     </motion.section>
+    </main>
+
   );
 };
 

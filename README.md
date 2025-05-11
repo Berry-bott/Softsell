@@ -3,7 +3,7 @@
 A single-page marketing website built for the Credex Web Development Internship assignment.
 
 ## ✨ Live Demo
-🔗 [View Live Site](https://your-vercel-deployment-url.com)
+🔗 [View Live Site](http://softsell-p01y8zjrr-berryfreshs-projects.vercel.app)
 
 ---
 
@@ -32,10 +32,11 @@ A single-page marketing website built for the Credex Web Development Internship 
 
 ## 🛠️ Tech Stack
 
-- [Next.js](https://nextjs.org/) – Framework
+- [React.js](https://nextjs.org/) – Framework
 - [Tailwind CSS](https://tailwindcss.com/) – Styling
 - [TypeScript](https://www.typescriptlang.org/) – Type safety
 - [Vercel](https://vercel.com/) – Deployment
+- [OpenAI](https://platform.openai.com/docs/api-reference/) – API
 
 ---
 
@@ -52,3 +53,7 @@ A single-page marketing website built for the Credex Web Development Internship 
 
 ## 📁 Folder Structure
 
+//To start the project
+
+// cd softsell
+// npm run dev
